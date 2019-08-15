@@ -61,8 +61,8 @@ def yadcf_range_number(expr, value):
 
 def yadcf_range_date(expr, value):
     v_from, v_to = value.split('-yadcf_delim-')
-    v_from = date_parse(v_from) if v_from != '' else datetime.date.min
-    v_to = date_parse(v_to) if v_to != '' else datetime.date.max
+    v_from = date_parse(v_from).strftime('%Y-%m-%d') if v_from != '' else datetime.date.min
+    v_to = date_parse(v_to).strftime('%Y-%m-%d') if v_to != '' else datetime.date.max
     logger.debug('yadcf_range_date: between %s and %s', v_from, v_to)
     return expr.between(v_from, v_to)
 
